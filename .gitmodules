@@ -91,3 +91,9 @@
 [submodule ".vim/bundle/powerline"]
 	path = .vim/bundle/powerline
 	url = https://github.com/powerline/powerline.git
+[submodule ".vim/bundle/dash.vim"]
+	path = .vim/bundle/dash.vim
+	url = https://github.com/rizzatti/dash.vim.git
+[submodule ".vim/bundle/vim-jekyll"]
+	path = .vim/bundle/vim-jekyll
+	url = https://github.com/parkr/vim-jekyll.git
