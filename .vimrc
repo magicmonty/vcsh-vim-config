@@ -1,4 +1,3 @@
-
 set nocompatible
 let mapleader=" "
 let g:mapleader=" "
@@ -309,7 +308,8 @@ inoremap <C-U>= <Esc>kyyp^v$r=ja
 
 " Edit user's vimrc and gvimrc in new tabs.
 "
-nnoremap <Leader>ev  :tabedit $MYGVIMRC<CR>:tabedit $MYVIMRC<CR>
+nnoremap <Leader>ev  :e $MYVIMRC<CR>
+nnoremap <Leader>lv  :so $MYVIMRC<CR>
 
 " Make page-forward and page-backward work in insert mode.
 "
@@ -354,7 +354,10 @@ nnoremap <Leader>w  :set invwrap<BAR>set wrap?<CR>
 " Toggle the NERD Tree window
 "
 nnoremap <Leader>.  :NERDTreeToggle<CR>
+command NERDTreeWindowsRightPos let g:NERDTreeWinPos = "right"
+command NERDTreeWindowsLeftPos let g:NERDTreeWinPos = "left"
 
+"
 " Make it easy to :Tabularize
 "
 nnoremap <Leader><Tab> <Esc>:Tabularize /
@@ -455,3 +458,57 @@ if &term =~ '256color'
   " see also http://snk.tuxfamily.org/log/vim-256color-bce.html
   set t_ut=
 endif
+
+let g:user_emmet_mode='a'
+let g:user_emmet_install_global=0
+autocmd FileType html,css EmmetInstall
+"let g:user_emmet_leader_key='<C-SPC>'
+"
+"
+noremap H 0
+noremap L $
+vmap v <Plug>(expand_region_expand)
+vmap <C-v> <Plug>(expand_region_shrink)
+
+map q: :q
+map <leader>ii :IndentGuidesToggle<cr>
+
+command SetIndent2Spaces set nopi shiftwidth=2 softtabstop=2
+command SetIndent4Spaces set nopi shiftwidth=4 softtabstop=4
+command SetIndentTabs set noet ci pi sts=0 sw=4 ts=4
+
+map <leader>i2 :SetIndent2Spaces<CR>
+map <leader>i4 :SetIndent4Spaces<CR>
+map <leader>it :SetIndentTabs<CR>
+
+nnoremap <leader><space> :noh<cr> " clear highlighted search results
+noremap < <<
+noremap > >>
+noremap <leader>D VGdo<Esc>
+nnoremap <leader>c za " toggle fold
+vnoremap <leader>c za " toggle fold
+map <leader>rn :set relativenumber!<cr>
+map <leader>wr :set wrap!<cr>
+nnoremap <leader>v :vsplit<cr>
+nnoremap <leader>h :hsplit<cr>
+nnoremap <leader>da :Dash<cr>
+map <leader># gcc
+inoremap jj <Esc>
+inoremap jk <Esc>
+
+" GitGutter related
+highlight GitGutterAdd ctermfg=darkgreen
+highlight GitGutterChange ctermfg=darkyellow
+highlight GitGutterDelete ctermfg=darkred
+highlight GitGutterChangeDelete ctermfg=darkyellow
+highlight SignColumn ctermbg=black
+
+map<leader>gg :GitGutterToggle<CR>
+map <leader>gp :GitGutterPreviewHunk<CR>
+map <leader>gr :GitGutterRevertHunk<CR>
+
+" indent guide plugin
+let g:indent_guides_guide_size=1
+let g:indent_guides_start_level=2
+let g:indent_guides_enable_on_vim_startup=1
+
