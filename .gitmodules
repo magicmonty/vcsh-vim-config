@@ -121,3 +121,6 @@
 [submodule ".vim/bundle/vim-markdown-folding"]
 	path = .vim/bundle/vim-markdown-folding
 	url = https://github.com/nelstrom/vim-markdown-folding.git
+[submodule ".vim/bundle/supertab"]
+	path = .vim/bundle/supertab
+	url = https://github.com/ervandew/supertab.git

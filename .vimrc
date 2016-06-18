@@ -440,11 +440,12 @@ imap <C-@> <C-Space>
 nnoremap <leader><Tab> :tabNext<cr>
 let g:NERDTreeQuitOnOpen=1
 
-
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
+noremap <leader>bn :bn<cr>
+noremap <leader>bp :bp<cr>
 imap <buffer> <C-e> <Esc><Esc>ms[[cpp`sl
 nmap <buffer> <C-e> ms[[cpp`s
 let g:airline_powerline_fonts = 1
@@ -511,4 +512,13 @@ map <leader>gr :GitGutterRevertHunk<CR>
 let g:indent_guides_guide_size=1
 let g:indent_guides_start_level=2
 let g:indent_guides_enable_on_vim_startup=1
+
+"Super tab settings - uncomment the next 4 lines
+let g:SuperTabDefaultCompletionType = 'context'
+let g:SuperTabContextDefaultCompletionType = "<c-x><c-o>"
+let g:SuperTabDefaultCompletionTypeDiscovery = ["&omnifunc:<c-x><c-o>","&completefunc:<c-x><c-n>"]
+let g:SuperTabClosePreviewOnPopupClose = 1
+
+set completeopt=longest,menuone,preview
+
 
