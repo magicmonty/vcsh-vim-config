@@ -354,8 +354,8 @@ nnoremap <Leader>w  :set invwrap<BAR>set wrap?<CR>
 " Toggle the NERD Tree window
 "
 nnoremap <Leader>.  :NERDTreeToggle<CR>
-command NERDTreeWindowsRightPos let g:NERDTreeWinPos = "right"
-command NERDTreeWindowsLeftPos let g:NERDTreeWinPos = "left"
+command! NERDTreeWindowsRightPos let g:NERDTreeWinPos = "right"
+command! NERDTreeWindowsLeftPos let g:NERDTreeWinPos = "left"
 
 "
 " Make it easy to :Tabularize
@@ -474,9 +474,9 @@ vmap <C-v> <Plug>(expand_region_shrink)
 map q: :q
 map <leader>ii :IndentGuidesToggle<cr>
 
-command SetIndent2Spaces set nopi shiftwidth=2 softtabstop=2
-command SetIndent4Spaces set nopi shiftwidth=4 softtabstop=4
-command SetIndentTabs set noet ci pi sts=0 sw=4 ts=4
+command! SetIndent2Spaces set nopi shiftwidth=2 softtabstop=2
+command! SetIndent4Spaces set nopi shiftwidth=4 softtabstop=4
+command! SetIndentTabs set noet ci pi sts=0 sw=4 ts=4
 
 map <leader>i2 :SetIndent2Spaces<CR>
 map <leader>i4 :SetIndent4Spaces<CR>
@@ -520,5 +520,13 @@ let g:SuperTabDefaultCompletionTypeDiscovery = ["&omnifunc:<c-x><c-o>","&complet
 let g:SuperTabClosePreviewOnPopupClose = 1
 
 set completeopt=longest,menuone,preview
+set completeopt=longest,menuone,preview
 
+" yy should work with clipboard=unnamedplus
+nnoremap yy ""yy
+
+" C-d duplicates line or visual selection (cursor stays in position in normal and insert mode)
+nmap <C-d> mg""yyp`g:delm g<cr>
+imap <C-d> <C-O>mg<C-O>""yy<C-O>p<C-O>`g<C-O>:delm g<cr>
+vmap <C-d> ""y<up>""p
 
