@@ -1,6 +1,7 @@
 set nocompatible
 let mapleader=" "
 let g:mapleader=" "
+set showmode            " show the input mode in the footer
 set shortmess+=I        " Don't show the Vim welcome screen.
 set clipboard=unnamedplus " use system clipboard with * register
 
@@ -16,6 +17,7 @@ set showcmd             " Display incomplete commands.
 set incsearch           " Do incremental searching.
 set hlsearch            " Highlight latest search pattern.
 set number              " Display line numbers.
+set relativenumber      " show line numbers centred around the current line
 set numberwidth=4       " Minimum number of columns to show for line numbers.
 set laststatus=2        " Always show a status line.
 set visualbell t_vb=    " Use null visual bell (no beeps or flashes).
@@ -195,6 +197,20 @@ if has("autocmd") && !exists("autocommands_loaded")
   " but a few scripts still run after it.
   "
   autocmd VimEnter * :source ~/.vim/run-last.vim
+
+
+  augroup vimrcEx
+    autocmd!
+
+    autocmd BufRead,BufNewFile	*.build		setfiletype xml
+    autocmd BufRead,BufNewFile	*.targets	setfiletype xml
+    autocmd BufRead,BufNewFile	*.nunit		setfiletype xml
+    autocmd BufRead,BufNewFile	*.config	setfiletype xml
+    autocmd BufRead,BufNewFile	*.xaml		setfiletype xml
+    autocmd BufRead,BufNewFile	*.DotSettings		setfiletype xml
+
+    autocmd FocusLost * silent! :wa
+  augroup END
 
 endif " has("autocmd")
 
@@ -384,8 +400,8 @@ au Syntax * RainbowParenthesesLoadRound
 au Syntax * RainbowParenthesesLoadSquare
 au Syntax * RainbowParenthesesLoadBraces
 
+let g:solarized_termcolors=256
 if $TERMKIT_HOST_APP=="Cathode"
-  let g:solarized_termcolors=256
   let g:solarized_bold=0
   let g:solarized_underline=0
   let g:solarized_italic=0
@@ -529,4 +545,17 @@ nnoremap yy ""yy
 nmap <C-d> mg""yyp`g:delm g<cr>
 imap <C-d> <C-O>mg<C-O>""yy<C-O>p<C-O>`g<C-O>:delm g<cr>
 vmap <C-d> ""y<up>""p
+
+let g:vim_markdown_formatter = 1
+let g:vim_markdown_folding_level = 3
+let g:vim_markdown_folding_disabled = 1
+
+
+" put the swap file in %TEMP%. The extra backslashes cause a unique filename
+if has("unix")
+  set directory=/tmp
+else
+  set directory=$TEMP\\\
+endif
+
 
