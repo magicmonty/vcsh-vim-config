@@ -131,11 +131,6 @@ if &t_Co > 2 || has("gui_running")
     syntax on
 endif
 
-" Use pathogen for better plugin management.
-"
-call pathogen#incubate()
-execute pathogen#infect()
-
 if has("autocmd") && !exists("autocommands_loaded")
 
   " Set a flag to indicate that autocommands have already been loaded,
@@ -400,8 +395,8 @@ au Syntax * RainbowParenthesesLoadRound
 au Syntax * RainbowParenthesesLoadSquare
 au Syntax * RainbowParenthesesLoadBraces
 
-let g:solarized_termcolors=256
 if $TERMKIT_HOST_APP=="Cathode"
+  let g:solarized_termcolors=256
   let g:solarized_bold=0
   let g:solarized_underline=0
   let g:solarized_italic=0
