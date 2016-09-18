@@ -131,11 +131,6 @@ if &t_Co > 2 || has("gui_running")
     syntax on
 endif
 
-" Use pathogen for better plugin management.
-"
-call pathogen#incubate()
-execute pathogen#infect()
-
 if has("autocmd") && !exists("autocommands_loaded")
 
   " Set a flag to indicate that autocommands have already been loaded,
