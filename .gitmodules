@@ -1,28 +1,28 @@
 [submodule ".vim/pack/vim-pack-colors"]
 	path = .vim/pack/vim-pack-colors
-	url = git@magicmonty.github.com:magicmonty/vim-pack-colors.git
+	url = git@github.com:magicmonty/vim-pack-colors.git
   ignore = dirty
 [submodule ".vim/pack/vim-pack-osx"]
 	path = .vim/pack/vim-pack-osx
-	url = git@magicmonty.github.com:magicmonty/vim-pack-osx.git
+	url = git@github.com:magicmonty/vim-pack-osx.git
   ignore = dirty
 [submodule ".vim/pack/vim-pack-dotnet"]
 	path = .vim/pack/vim-pack-dotnet
-	url = git@magicmonty.github.com:magicmonty/vim-pack-dotnet.git
+	url = git@github.com:magicmonty/vim-pack-dotnet.git
   ignore = dirty
 [submodule ".vim/pack/vim-pack-git"]
 	path = .vim/pack/vim-pack-git
-	url = git@magicmonty.github.com:magicmonty/vim-pack-git.git
+	url = git@github.com:magicmonty/vim-pack-git.git
   ignore = dirty
 [submodule ".vim/pack/vim-pack-clojure"]
 	path = .vim/pack/vim-pack-clojure
-	url = git@magicmonty.github.com:magicmonty/vim-pack-clojure.git
+	url = git@github.com:magicmonty/vim-pack-clojure.git
   ignore = dirty
 [submodule ".vim/pack/vim-pack-blog"]
 	path = .vim/pack/vim-pack-blog
-	url = git@magicmonty.github.com:magicmonty/vim-pack-blog.git
+	url = git@github.com:magicmonty/vim-pack-blog.git
   ignore = dirty
 [submodule ".vim/pack/vim-pack-general"]
 	path = .vim/pack/vim-pack-general
-	url = git@magicmonty.github.com:magicmonty/vim-pack-general.git
+	url = git@github.com:magicmonty/vim-pack-general.git
   ignore = dirty
