@@ -553,4 +553,8 @@ else
   set directory=$TEMP\\\
 endif
 
+autocmd FileType elm nnoremap <leader>el :ElmEvalLine<CR>
+autocmd FileType elm vnoremap <leader>es :<C-u>ElmEvalSelection<CR>
+autocmd FileType elm nnoremap <leader>em :ElmMakeCurrentFile<CR>
+
 
