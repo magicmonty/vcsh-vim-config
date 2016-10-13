@@ -125,15 +125,15 @@ snippet moria "Mines of Moria melody"
 endsnippet
 
 snippet temprec "Simple temporal recursion"
-(defn ${1:name} [metro t beat]
+(defn ${1:name} [metro t beat factor]
   (at t
-    (let [next-beat (+ beat 1)
-          next-t (+ t (mspb metro))]
+    (let [next-beat (+ beat factor)
+          next-t (+ t (* factor (mspb metro)))]
       $0
-      (apply-by next-t #'$1 [metro next-t next-beat]))))
+      (apply-by next-t #'$1 [metro next-t next-beat factor]))))
 
 (comment
-($1 metro (atbeat metro 1) 0)
+($1 metro (atbeat metro 1) 0 1)
 )
 endsnippet
 
