@@ -364,9 +364,9 @@ nnoremap <Leader>w  :set invwrap<BAR>set wrap?<CR>
 
 " Toggle the NERD Tree window
 "
-nnoremap <Leader>.  :NERDTreeToggle<CR>
-command! NERDTreeWindowsRightPos let g:NERDTreeWinPos = "right"
-command! NERDTreeWindowsLeftPos let g:NERDTreeWinPos = "left"
+" nnoremap <Leader>.  :NERDTreeToggle<CR>
+" command! NERDTreeWindowsRightPos let g:NERDTreeWinPos = "right"
+" command! NERDTreeWindowsLeftPos let g:NERDTreeWinPos = "left"
 
 "
 " Make it easy to :Tabularize
@@ -449,7 +449,7 @@ inoremap <expr> <C-Space> pumvisible() \|\| &omnifunc == '' ?
 imap <C-@> <C-Space>
 
 nnoremap <leader><Tab> :tabNext<cr>
-let g:NERDTreeQuitOnOpen=1
+" let g:NERDTreeQuitOnOpen=1
 
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
@@ -560,3 +560,44 @@ autocmd FileType elm nnoremap <leader>em :ElmMakeCurrentFile<CR>
 " Disable ex mode
 :map Q <Nop>
 
+" make column 80 visible
+if (exists('+colorcolumn'))
+  set colorcolumn=120
+  highlight ColorColumn ctermbg=10
+endif
+
+" use Denite as file searcher
+try
+  call denite#custom#var('file_rec', 'command', ['ag', '--follow', '--nocolor', '--nogroup', '-g', ''])
+  call denite#custom#source('file_rec', 'matchers', ['matcher_fuzzy'])
+catch
+endtry
+
+nnoremap <leader>. :Denite file_rec<cr>
+
+" AG
+nmap ° :Ag <c-r>=expand("<cword>")<cr><cr>
+nnoremap <leader>/ :Ag
+
+" Setup Rainbow parentheses for clojure
+autocmd BufEnter *.cljs,*.clj,*.cljs.hl setlocal iskeyword+=?,-,*,!,+,/,=,<,>,.,:
+
+" Fix Rainbow parentheses for solarized
+let g:rbpt_colorpairs = [
+	\ ['darkyellow',  'RoyalBlue3'],
+	\ ['darkgreen',   'SeaGreen3'],
+	\ ['darkcyan',    'DarkOrchid3'],
+	\ ['Darkblue',    'firebrick3'],
+	\ ['DarkMagenta', 'RoyalBlue3'],
+	\ ['darkred',     'SeaGreen3'],
+	\ ['darkyellow',  'DarkOrchid3'],
+	\ ['darkgreen',   'firebrick3'],
+	\ ['darkcyan',    'RoyalBlue3'],
+	\ ['Darkblue',    'SeaGreen3'],
+	\ ['DarkMagenta', 'DarkOrchid3'],
+	\ ['Darkblue',    'firebrick3'],
+	\ ['darkcyan',    'SeaGreen3'],
+	\ ['darkgreen',   'RoyalBlue3'],
+	\ ['darkyellow',  'DarkOrchid3'],
+	\ ['darkred',     'firebrick3'],
+	\ ]
