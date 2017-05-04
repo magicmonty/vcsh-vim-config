@@ -152,6 +152,16 @@ if has("autocmd") && !exists("autocommands_loaded")
 
   set runtimepath+=$GOROOT/misc/vim
 
+" VimOrganizer stuff
+let g:ft_ignore_pat = '\.org'
+command! OrgCapture :call org#CaptureBuffer()
+command! OrgCaptureFile :call org#OpenCaptureFile()
+au! BufRead,BufWrite,BufWritePost,BufNewFile *.org
+au BufEnter *.org            call org#SetOrgFileType()
+let g:org_todo_setup='TODO NEXT STARTED WAITING | DONE CANCELLED'
+let g:org_tags_alist='{@home(h) @work(w)} {easy(e) hard(d)} {computer(c) phone(p)}'
+
+
   filetype on
   syntax on
   filetype plugin indent on
@@ -192,7 +202,6 @@ if has("autocmd") && !exists("autocommands_loaded")
   " but a few scripts still run after it.
   "
   autocmd VimEnter * :source ~/.vim/run-last.vim
-
 
   augroup vimrcEx
     autocmd!
@@ -395,16 +404,29 @@ au Syntax * RainbowParenthesesLoadRound
 au Syntax * RainbowParenthesesLoadSquare
 au Syntax * RainbowParenthesesLoadBraces
 
+set termguicolors
+
+let g:airline_theme='gruvbox'
+let g:gruvbox_bold=1
+let g:gruvbox_italic=0
+let g:gruvbox_underline=1
+let g:gruvbox_undercurl=1
+let g:gruvbox_contrast_dark='hard'
+let g:gruvbox_improved_strings=0
+
 if $TERMKIT_HOST_APP=="Cathode"
   let g:solarized_termcolors=256
   let g:solarized_bold=0
   let g:solarized_underline=0
   let g:solarized_italic=0
-  let g:airline_theme='powerlineish'
+  let g:gruvbox_bold=0
+  let g:gruvbox_underline=0
+  let g:gruvbox_undercurl=0
   let g:airline_powerline_fonts = 0
 endif
 
-colorscheme solarized
+
+colorscheme gruvbox
 set background=dark
 
 """
@@ -531,10 +553,9 @@ let g:SuperTabDefaultCompletionTypeDiscovery = ["&omnifunc:<c-x><c-o>","&complet
 let g:SuperTabClosePreviewOnPopupClose = 1
 
 set completeopt=longest,menuone,preview
-set completeopt=longest,menuone,preview
 
 " yy should work with clipboard=unnamedplus
-nnoremap yy ""yy
+nnoremap yy "*yy
 
 " C-d duplicates line or visual selection (cursor stays in position in normal and insert mode)
 nmap <C-d> mg""yyp`g:delm g<cr>
@@ -559,12 +580,6 @@ autocmd FileType elm nnoremap <leader>em :ElmMakeCurrentFile<CR>
 
 " Disable ex mode
 :map Q <Nop>
-
-" make column 80 visible
-if (exists('+colorcolumn'))
-  set colorcolumn=120
-  highlight ColorColumn ctermbg=10
-endif
 
 " use Denite as file searcher
 try
@@ -601,3 +616,13 @@ let g:rbpt_colorpairs = [
 	\ ['darkyellow',  'DarkOrchid3'],
 	\ ['darkred',     'firebrick3'],
 	\ ]
+
+" Reload .vimrc on saving
+autocmd BufWritePost $MYVIMRC source $MYVIMRC
+
+
+
+" Calendar.vim
+let g:calendar_google_calendar = 1
+let g:calendar_google_task = 1
+
