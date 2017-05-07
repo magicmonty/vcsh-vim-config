@@ -414,6 +414,9 @@ let g:gruvbox_undercurl=1
 let g:gruvbox_contrast_dark='hard'
 let g:gruvbox_improved_strings=0
 
+let g:airline#extensions#syntastic#enabled = 1
+let g:airline_skip_empty_sections = 1
+
 if $TERMKIT_HOST_APP=="Cathode"
   let g:solarized_termcolors=256
   let g:solarized_bold=0
@@ -423,6 +426,17 @@ if $TERMKIT_HOST_APP=="Cathode"
   let g:gruvbox_underline=0
   let g:gruvbox_undercurl=0
   let g:airline_powerline_fonts = 0
+  set notermguicolors
+  if !exists('g:airline_symbols')
+    let g:airline_symbols = {}
+  endif
+  let g:airline_symbols.space = "\ua0"
+  let g:airline_symbols.linenr = "¶"
+  let g:airline_symbols.maxlinenr = ""
+  let g:airline_symbols.branch = ""
+  let g:airline_symbols.paste = "ρ"
+  let g:airline_left_sep = "»"
+  let g:airline_right_sep = "«"
 endif
 
 
