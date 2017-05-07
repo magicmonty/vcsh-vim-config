@@ -415,6 +415,8 @@ let g:gruvbox_contrast_dark='hard'
 let g:gruvbox_improved_strings=0
 
 let g:airline#extensions#syntastic#enabled = 1
+
+let g:airline#extensions#tabline#enabled = 1
 let g:airline_skip_empty_sections = 1
 
 if $TERMKIT_HOST_APP=="Cathode"
