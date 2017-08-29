@@ -150,8 +150,6 @@ if has("autocmd") && !exists("autocommands_loaded")
   filetype off
   filetype plugin indent off
 
-  set runtimepath+=$GOROOT/misc/vim
-
 " VimOrganizer stuff
 let g:ft_ignore_pat = '\.org'
 command! OrgCapture :call org#CaptureBuffer()
@@ -613,6 +611,8 @@ nnoremap <leader>/ :Ag
 " Setup Rainbow parentheses for clojure
 autocmd BufEnter *.cljs,*.clj,*.cljs.hl setlocal iskeyword+=?,-,*,!,+,/,=,<,>,.,:
 
+autocmd BufEnter *.fish set ft=fish
+
 " Fix Rainbow parentheses for solarized
 let g:rbpt_colorpairs = [
 	\ ['darkyellow',  'RoyalBlue3'],
@@ -641,4 +641,8 @@ autocmd BufWritePost $MYVIMRC source $MYVIMRC
 " Calendar.vim
 let g:calendar_google_calendar = 1
 let g:calendar_google_task = 1
+
+if &shell =~# 'fish$'
+  set shell=sh
+endif
 
