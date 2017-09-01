@@ -26,3 +26,7 @@
 	path = .vim/pack/vim-pack-general
 	url = git@github.com:magicmonty/vim-pack-general.git
   ignore = dirty
+[submodule ".vim/pack/vim-pack-nvim"]
+	path = .vim/pack/vim-pack-nvim
+	url = git@github.com:magicmonty/vim-pack-neovim.git
+  ignore = dirty
